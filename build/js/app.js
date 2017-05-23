@@ -3,6 +3,12 @@ function Alarm(time) {
   this.time = time;
 }
 
+Alarm.prototype.snooze = function() {
+  newTime = moment().add(1, 'm').format('hh:mm');
+  console.log(newTime);
+  return newTime;
+}
+
 exports.alarmModule = Alarm;
 
 },{}],2:[function(require,module,exports){
@@ -19,9 +25,18 @@ $(document).ready(function(){
   alarmReset = false;
   setInterval(function(){
     $('#time').text(moment().format('LTS'));
+    console.log(alarm.time);
     if(alarm.time == moment().format('hh:mm') && (alarmReset === false)){
-      alert("WHOOP WHOOP!");
       alarmReset = true;
+      var snooze = confirm("Want to snooze?");
+
+      if(snooze === true) {
+        snoozeTime = alarm.snooze();
+        alarm.time = snoozeTime;
+        console.log("Snoozed time: " + alarm.time);
+        alarmReset = false;
+        snooze = false;
+      }
     }
   }, 1000);
 });
