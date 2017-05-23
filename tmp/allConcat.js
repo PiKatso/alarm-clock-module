@@ -1,27 +1,28 @@
 Alarm = require('./../js/alarm-clock.js').alarmModule;
 
 $(document).ready(function(){
-  alarm = new Alarm("");
+  alarms = [];
   $("#alarm-form").submit(function(e){
     e.preventDefault();
-    alarm.time = $("#input-time").val();
+    newAlarm = new Alarm($("#input-time").val());
+    alarms.push(newAlarm);
     $("#input-time").val("");
   });
 
   alarmReset = false;
   setInterval(function(){
     $('#time').text(moment().format('LTS'));
-    console.log("ALARM: "alarm.time);
-    console.log("MOMENT: "moment().format('hh:mm'));
-    if(alarm.time == moment().format('hh:mm') && (alarmReset === false)){
-      alarmReset = true;
-      var snooze = confirm("Want to snooze?");
-      if(snooze === true) {
-        snoozeTime = alarm.snooze();
-        alarm.time = snoozeTime;
-        alarmReset = false;
-        snooze = false;
+    alarms.forEach(function(alarm) {
+      if(alarm.time == moment().format('hh:mm') && (alarm.isDone === false)){
+        alarm.isDone = true;
+        var snooze = confirm("Want to snooze?");
+        if(snooze === true) {
+          snoozeTime = alarm.snooze();
+          alarm.time = snoozeTime;
+          alarm.isDone = false;
+          snooze = false;
+        }
       }
-    }
+    });
   }, 1000);
 });
