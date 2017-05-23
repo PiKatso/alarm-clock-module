@@ -3,8 +3,7 @@ function Alarm(time) {
 }
 
 Alarm.prototype.snooze = function() {
-  newTime = moment().add(1, 'm').format('hh:mm');
-  console.log(newTime);
+  newTime = moment().add(5, 'm').format('hh:mm');
   return newTime;
 }
 

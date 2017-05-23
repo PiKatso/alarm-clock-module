@@ -5,16 +5,24 @@
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <link rel="stylesheet" href="build/css/vendor.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link rel="stylesheet" href="build/css/the-hotness.css">
     <title></title>
   </head>
   <body>
-    <h3 id="time"></h3>
-    <hr>
-    <h3>Set an alarm</h3>
-    <form id="alarm-form">
-      <label for="time">Enter an alarm:</label>
-      <input id="input-time" type="time" name="alarm">
-      <button type="submit">Create alarm!</button>
-    </form>
+    <div class="container">
+      <div class="digital-alarm">
+        <h3 id="time"></h3>
+      </div>
+      <hr>
+      <div class="input-container">
+        <h3>Set an alarm</h3>
+        <form id="alarm-form">
+          <input class="form-control" id="input-time" type="time" name="alarm">
+          <button class="btn btn-success" type="submit">Create alarm!</button>
+        </form>
+      </div>
+    </div>
+
   </body>
 </html>

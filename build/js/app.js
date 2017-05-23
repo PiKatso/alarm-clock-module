@@ -5,7 +5,6 @@ function Alarm(time) {
 
 Alarm.prototype.snooze = function() {
   newTime = moment().add(1, 'm').format('hh:mm');
-  console.log(newTime);
   return newTime;
 }
 
@@ -26,14 +25,13 @@ $(document).ready(function(){
   setInterval(function(){
     $('#time').text(moment().format('LTS'));
     console.log(alarm.time);
+    console.log(moment().format('hh:mm'));
     if(alarm.time == moment().format('hh:mm') && (alarmReset === false)){
       alarmReset = true;
       var snooze = confirm("Want to snooze?");
-
       if(snooze === true) {
         snoozeTime = alarm.snooze();
         alarm.time = snoozeTime;
-        console.log("Snoozed time: " + alarm.time);
         alarmReset = false;
         snooze = false;
       }

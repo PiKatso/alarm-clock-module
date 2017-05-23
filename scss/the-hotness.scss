@@ -1,0 +1,39 @@
+$gray : #d3d3d3;
+$green : #75B975;
+
+body{
+  background-color: $gray;
+  text-align: center;
+
+  .digital-alarm{
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 80px;
+    padding-top: 4.5%;
+    margin-left: 34%;
+    border-radius: 30%;
+    width: 400px;
+    height: 180px;
+    background-color: black;
+    color: white;
+
+    #time{
+      font-size: 50px;
+      color: lightgreen;
+      text-shadow: 0 0 0.2em $green;
+    }
+  }
+
+  .input-container{
+    margin-top: 50px;
+
+    input {
+      width: 150px;
+      margin-left: 43.5%;
+    }
+    button {
+      margin-top: 10px;
+      color: black;
+      font-size: 15px;
+    }
+  }
+}
